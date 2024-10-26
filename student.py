@@ -38,42 +38,38 @@ class Student:
         ## text entries
 
         entry_index = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_index.place(x=200,y=80, width=150)
+        entry_index.place(x=200,y=80, width=250)
         entry_index.focus()
 
         
         entry_name = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_name.place(x=200,y=120, width=150)
+        entry_name.place(x=200,y=120, width=250)
         
 
          
         entry_address = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_address.place(x=200,y=160, width=150)
+        entry_address.place(x=200,y=160, width=250)
      
          
         entry_contact = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_contact.place(x=200,y=200, width=150)
+        entry_contact.place(x=200,y=200, width=250)
      
          
         entry_email = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_email.place(x=200,y=240, width=150)
+        entry_email.place(x=200,y=240, width=250)
         
          
         entry_class = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
-        entry_class.place(x=200,y=280, width=150)
+        entry_class.place(x=200,y=280, width=250)
 
 
         self.btnsave_image = ImageTk.PhotoImage(Image.open("./Images/save.png").resize((110,55)))
         self.btndelete_image = ImageTk.PhotoImage(Image.open("./Images/delete.png").resize((110,50)))
         self.btnupdate_image =ImageTk.PhotoImage(Image.open("./Images/update.png").resize((110,50)))
         self.btnclear_image =ImageTk.PhotoImage(Image.open('./Images/clear.png').resize((110,50)))
-        #self.lbl_btnsave_image = Label(self.root, image=self.btnsave_image, bd=0)
-        #self.lbl_btnsave_image.place(x=100, y=340)
 
         ## Buttons
         btn_save =Button(self.root,text="Save",cursor='hand1', image=self.btnsave_image, bd=0, font=(9))
-                         #font=("times", 10, "bold"),fg='white',bg="#4CAF50",activebackground="#45a049",activeforeground="white",bd=2,
-                         # relief="raised",padx=10, pady=5)
         btn_save.place(x=10, y=340, width=100)
 
         btn_delete = Button( self.root, cursor="hand1",text="Delete", image=self.btndelete_image, bd=0)
