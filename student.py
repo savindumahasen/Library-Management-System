@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
+import pymysql
 
 class Student:
     def __init__(self, root):
@@ -84,7 +85,27 @@ class Student:
 
 
     def save(self):
-        pass
+        sqlcon =pymysql.connect(host="localhost", user="root",password="Savindu@123", database="student")
+        cur=sqlcon.cursor()
+        try:
+            if self.var_index.get()=="":
+                messagebox.showerror("Error","All Fields Are Required........!")
+            else:
+                cur.execute("INSERT INTO student(indexno,name,address,contact,email,class) VALUES (%s,%s,%s,%s,%s,%s)",
+                (
+                  self.var_index.get(),
+                  self.var_name.get(),
+                  self.var_address.get(),
+                  self.var_contact.get(),
+                  self.var_email.get(),
+                  self.var_class.get(),
+
+                ))
+                sqlcon.commit()
+                messagebox.showinfo("Sucess","Data is inserted sucessfully........!")
+                sqlcon.close()
+        except Exception as ex:
+                messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
          
      
