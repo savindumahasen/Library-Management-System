@@ -89,7 +89,17 @@ class Student:
         cur=sqlcon.cursor()
         try:
             if self.var_index.get()=="":
-                messagebox.showerror("Error","All Fields Are Required........!")
+                messagebox.showerror("Error","Index is Required")
+            elif self.var_name.get()=="":
+                 messagebox.showerror("Error","Student Name is required")
+            elif self.var_address.get()=="":
+                 messagebox.showerror("Error","Home Address is required")
+            elif self.var_contact.get()=="":
+                 messagebox.showerror("Error","Parent Contact is required")
+            elif self.var_email.get()=="":
+                 messagebox.showerror("Error","Student Email is required")
+            elif self.var_class.get()=="":
+                 messagebox.showerror("Error","Student Class is required")
             else:
                 cur.execute("INSERT INTO student(indexno,name,address,contact,email,class) VALUES (%s,%s,%s,%s,%s,%s)",
                 (
