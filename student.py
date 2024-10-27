@@ -69,7 +69,7 @@ class Student:
         self.btnclear_image =ImageTk.PhotoImage(Image.open('./Images/clear.png').resize((110,50)))
 
         ## Buttons
-        btn_save =Button(self.root,text="Save",cursor='hand1', image=self.btnsave_image, bd=0)
+        btn_save =Button(self.root,text="Save", command=self.save(),cursor='hand1', image=self.btnsave_image, bd=0)
         btn_save.place(x=10, y=340, width=100)
 
         btn_delete = Button( self.root, cursor="hand1",text="Delete", image=self.btndelete_image, bd=0)
