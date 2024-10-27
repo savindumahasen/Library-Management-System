@@ -37,29 +37,29 @@ class Student:
 
         ## text entries
 
-        entry_index = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_index = Entry(self.root,textvariable=self.var_index,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_index.place(x=200,y=80, width=250)
         entry_index.focus()
 
         
-        entry_name = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_name = Entry(self.root,textvariable=self.var_name,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_name.place(x=200,y=120, width=250)
         
 
          
-        entry_address = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_address = Entry(self.root,textvariable=self.var_address,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_address.place(x=200,y=160, width=250)
      
          
-        entry_contact = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_contact = Entry(self.root,textvariable=self.var_contact,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_contact.place(x=200,y=200, width=250)
      
          
-        entry_email = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_email = Entry(self.root,textvariable=self.var_email,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_email.place(x=200,y=240, width=250)
         
          
-        entry_class = Entry(self.root,font=("times", 14),fg='black',bg="white", justify=LEFT)
+        entry_class = Entry(self.root,textvariable=self.var_class,font=("times", 14),fg='black',bg="white", justify=LEFT)
         entry_class.place(x=200,y=280, width=250)
 
 
@@ -69,7 +69,7 @@ class Student:
         self.btnclear_image =ImageTk.PhotoImage(Image.open('./Images/clear.png').resize((110,50)))
 
         ## Buttons
-        btn_save =Button(self.root,text="Save", command=self.save(),cursor='hand1', image=self.btnsave_image, bd=0)
+        btn_save =Button(self.root,text="Save", command=self.save,cursor='hand1', image=self.btnsave_image, bd=0)
         btn_save.place(x=10, y=340, width=100)
 
         btn_delete = Button( self.root, cursor="hand1",text="Delete", image=self.btndelete_image, bd=0)
@@ -81,6 +81,10 @@ class Student:
         
         btn_clear = Button(self.root,cursor="hand1", text="Clear", image=self.btnclear_image, bd=0)
         btn_clear.place(x=340, y=340, width=100)
+
+
+    def save(self):
+        pass
 
          
      
