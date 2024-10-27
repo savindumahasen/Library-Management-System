@@ -89,13 +89,15 @@ class Student:
         cur=sqlcon.cursor()
         try:
             if self.var_index.get()=="":
-                messagebox.showerror("Error","Index is Required")
+                messagebox.showerror("Error","Index Number is Required")
             elif self.var_name.get()=="":
                  messagebox.showerror("Error","Student Name is required")
             elif self.var_address.get()=="":
                  messagebox.showerror("Error","Home Address is required")
             elif self.var_contact.get()=="":
                  messagebox.showerror("Error","Parent Contact is required")
+            elif len(self.var_contact.get())!=10:
+                 messagebox.showerror("Error","Contact Number should have 10 numers")
             elif self.var_email.get()=="":
                  messagebox.showerror("Error","Student Email is required")
             elif self.var_class.get()=="":
@@ -114,6 +116,7 @@ class Student:
                 sqlcon.commit()
                 messagebox.showinfo("Sucess","Data is inserted sucessfully........!")
                 sqlcon.close()
+                print("Close the database connection sucessfully")
         except Exception as ex:
                 messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
