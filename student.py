@@ -125,8 +125,23 @@ class Student:
         self.treeviewtable.pack(fill=BOTH,expand=1)
         scrolly.config(command=self.treeviewtable.yview)
         #self.treeviewtable.bind("<ButtonRelease-1>",self.getdata)
-        #self.displaydata()
-        
+        self.displaydata()
+
+    def displaydata(self):
+         
+        sqlcon =pymysql.connect(host="localhost", user="root",password="Savindu@123", database="student")
+        cur=sqlcon.cursor()
+        cur.execute("SELECT indexno,name,address,contact,email,class FROM student")
+        result=cur.fetchall()
+
+
+        self.treeviewtable.delete(*self.treeviewtable.get_children())
+
+        for row in result:
+             self.treeviewtable.insert("",END,values=row)
+
+         
+         
 
     def save(self):
 
