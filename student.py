@@ -2,11 +2,11 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import pymysql
-
+from tkinter import ttk,messagebox
 class Student:
     def __init__(self, root):
         self.root = root
-        self.root.geometry("1000x500+200+100")
+        self.root.geometry("1200x600+200+150")
         self.root.title("Student Management System")
         self.root.resizable(False, False)
 
@@ -83,8 +83,53 @@ class Student:
         btn_clear = Button(self.root,cursor="hand1", text="Clear", image=self.btnclear_image, bd=0)
         btn_clear.place(x=340, y=340, width=100)
 
+           ## Variables
+        self.var_index=StringVar()
+        self.var_name=StringVar()
+        self.var_address=StringVar()
+        self.var_contact=StringVar()
+        self.var_email=StringVar()
+        self.var_class=StringVar()
+        ## Treeview  ##
+
+        Treeview_frame = Frame(self.root, bd=2, relief=RIDGE)
+        Treeview_frame.place(x=0, y=400, width=1200, height=150)
+
+        scrolly=Scrollbar(Treeview_frame, orient=VERTICAL)
+        scrollx =Scrollbar(Treeview_frame,orient=HORIZONTAL)
+
+        self.treeviewtable=ttk.Treeview(Treeview_frame, columns=("indexno","name","address","contact","email","class"),yscrollcommand=scrolly.set,xscrollcommand=scrollx.set)
+
+        scrollx.config(command=self.treeviewtable.xview)
+        
+        scrolly.config(command=self.treeviewtable.yview)
+
+
+        self.treeviewtable.heading("indexno",text="IndexNo")
+        self.treeviewtable.heading("name",text="Name")
+        self.treeviewtable.heading("address",text="Address")
+        self.treeviewtable.heading("contact",text="Contact")
+        self.treeviewtable.heading("email",text="Email")
+        self.treeviewtable.heading("class",text="Class")
+
+
+        self.treeviewtable["show"]="headings"
+        self.treeviewtable.column("indexno",width=-10)
+        self.treeviewtable.column("name",width=-10)
+        self.treeviewtable.column("address", width=-10)
+        self.treeviewtable.column("contact", width=-10)
+        self.treeviewtable.column("email",width=-10)
+        self.treeviewtable.column("class",width=-10)
+
+
+        self.treeviewtable.pack(fill=BOTH,expand=1)
+        scrolly.config(command=self.treeviewtable.yview)
+        #self.treeviewtable.bind("<ButtonRelease-1>",self.getdata)
+        #self.displaydata()
+        
 
     def save(self):
+
         sqlcon =pymysql.connect(host="localhost", user="root",password="Savindu@123", database="student")
         cur=sqlcon.cursor()
         try:
