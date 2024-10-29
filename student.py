@@ -172,6 +172,18 @@ class Student:
         messagebox.showinfo("Success", "Record is updated successfully!")
         self.displaydata()
         sqlcon.close()
+
+    def delete(self):
+        sqlconn =pymysql.connect(host="localhost", user="root", password="Savindu@123", database="student")
+        cur=sqlconn.cursor()
+        cur.execute("DELETE FROM student WHERE indexno=%s",
+                        (
+                            self.var_index.get()
+                        ))
+        sqlconn.commit()
+        messagebox.showinfo("Success", "Record is deleteed successfully!")
+        self.displaydata()
+        sqlconn.close()
         
         
              
