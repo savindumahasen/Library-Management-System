@@ -54,7 +54,7 @@ class Student:
         Button(self.root, text="Save", command=self.save, cursor='hand1', image=self.btnsave_image, bd=0).place(x=10, y=340, width=100)
         Button(self.root, cursor="hand1", text="Delete",command=self.delete,image=self.btndelete_image, bd=0).place(x=120, y=340, width=100)
         Button(self.root, cursor="hand1", text="Update",command=self.update, image=self.btnupdate_image, bd=0).place(x=230, y=340, width=100)
-        Button(self.root, cursor="hand1", text="Clear", image=self.btnclear_image, bd=0).place(x=340, y=340, width=100)
+        Button(self.root, cursor="hand1", text="Clear",command=self.clear, image=self.btnclear_image, bd=0).place(x=340, y=340, width=100)
 
         # Treeview
         Treeview_frame = Frame(self.root, bd=2, relief=RIDGE)
@@ -151,6 +151,7 @@ class Student:
                 messagebox.showinfo("Success", "Data is inserted successfully!")
                 self.displaydata()
                 sqlcon.close()
+                self.clear()
         except Exception as ex:
             messagebox.showerror("Error", f"Error due to : {str(ex)}")
 
@@ -172,6 +173,7 @@ class Student:
         messagebox.showinfo("Success", "Record is updated successfully!")
         self.displaydata()
         sqlcon.close()
+        self.clear()
 
     def delete(self):
         sqlconn =pymysql.connect(host="localhost", user="root", password="Savindu@123", database="student")
@@ -184,6 +186,17 @@ class Student:
         messagebox.showinfo("Success", "Record is deleteed successfully!")
         self.displaydata()
         sqlconn.close()
+        self.clear()
+
+    def clear(self):
+                # Variables
+        self.var_index.set("")
+        self.var_name.set("")
+        self.var_address.set("")
+        self.var_contact.set("")
+        self.var_email.set("")
+        self.var_class.set("")
+
         
         
              
