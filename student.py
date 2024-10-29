@@ -198,10 +198,6 @@ class Student:
         self.var_class.set("")
 
         
-        
-             
-
-
 # Running the app
 root = Tk()
 obj = Student(root)
