@@ -52,8 +52,8 @@ class Student:
 
         # Buttons
         Button(self.root, text="Save", command=self.save, cursor='hand1', image=self.btnsave_image, bd=0).place(x=10, y=340, width=100)
-        Button(self.root, cursor="hand1", text="Delete", image=self.btndelete_image, bd=0).place(x=120, y=340, width=100)
-        Button(self.root, cursor="hand1", text="Update", image=self.btnupdate_image, bd=0).place(x=230, y=340, width=100)
+        Button(self.root, cursor="hand1", text="Delete",command=self.delete,image=self.btndelete_image, bd=0).place(x=120, y=340, width=100)
+        Button(self.root, cursor="hand1", text="Update",command=self.update, image=self.btnupdate_image, bd=0).place(x=230, y=340, width=100)
         Button(self.root, cursor="hand1", text="Clear", image=self.btnclear_image, bd=0).place(x=340, y=340, width=100)
 
         # Treeview
@@ -117,6 +117,7 @@ class Student:
             self.var_contact.set(row[3])
             self.var_email.set(row[4])
             self.var_class.set(row[5])
+            
 
     def save(self):
         sqlcon = pymysql.connect(host="localhost", user="root", password="Savindu@123", database="student")
@@ -152,6 +153,29 @@ class Student:
                 sqlcon.close()
         except Exception as ex:
             messagebox.showerror("Error", f"Error due to : {str(ex)}")
+
+    ## Update the record sucessfully
+    def update(self):
+        sqlcon = pymysql.connect(host="localhost", user="root", password="Savindu@123", database="student")
+        cur = sqlcon.cursor()
+        cur.execute("UPDATE student SET name=%s,address=%s,contact=%s,email=%s,class=%s WHERE indexno=%s",
+                    ( 
+                           self.var_name.get(), 
+                           self.var_address.get(),
+                           self.var_contact.get(),
+                           self.var_email.get(),
+                           self.var_class.get(),
+                           self.var_index.get()
+
+                    ))
+        sqlcon.commit()
+        messagebox.showinfo("Success", "Record is updated successfully!")
+        self.displaydata()
+        sqlcon.close()
+        
+        
+             
+
 
 # Running the app
 root = Tk()
